@@ -1,0 +1,291 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import blogsData from '../../data/blogs.json';
+
+export async function getStaticPaths() {
+  return blogsData.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const pageTitle = `${post.title} - Dog Health Blog`;
+const pageDescription = post.excerpt;
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <main>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-20 px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex items-center gap-2 mb-4">
+          <a href="/blog/" class="text-blue-200 hover:text-white transition-colors">
+            ← Back to Blog
+          </a>
+        </div>
+        
+        <div class="flex items-center gap-2 mb-4">
+          <span class={post.category === 'science' ? 'bg-purple-100 text-purple-800' : post.category === 'health' ? 'bg-green-100 text-green-800' : post.category === 'care' ? 'bg-blue-100 text-blue-800' : post.category === 'development' ? 'bg-orange-100 text-orange-800' : 'bg-gray-100 text-gray-800'} class="text-sm font-semibold px-3 py-1 rounded-full uppercase">
+            {post.category}
+          </span>
+          <span class="text-blue-100">{post.readTime}</span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          {post.title}
+        </h1>
+        
+        <p class="text-xl text-blue-100 mb-6 leading-relaxed">
+          {post.excerpt}
+        </p>
+        
+        <div class="flex flex-wrap gap-2 mb-6">
+          {post.tags.map((tag) => (
+            <span class="bg-white/20 text-white text-sm px-3 py-1 rounded-full">
+              {tag}
+            </span>
+          ))}
+        </div>
+        
+        <div class="flex items-center gap-4 text-sm text-blue-100">
+          <span class="font-medium">By {post.author}</span>
+          <span>•</span>
+          <span>Published on {post.publishDate}</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Article Content -->
+    <article class="py-16 px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="prose prose-lg max-w-none">
+          <div class="text-center mb-12">
+            <div class="text-8xl mb-6">{post.image}</div>
+          </div>
+          
+          <!-- Sample content based on post category -->
+          {post.category === 'science' && (
+            <div>
+              <h2>Scientific Research and Evidence</h2>
+              <p>This article explores the latest scientific research in canine health and behavior. Our findings are based on peer-reviewed studies and veterinary research.</p>
+              
+              <h3>Key Research Findings</h3>
+              <p>Recent studies have revealed important insights about dog health and aging:</p>
+              <ul>
+                <li>Advanced understanding of canine genetics</li>
+                <li>New insights into aging mechanisms</li>
+                <li>Evidence-based health recommendations</li>
+                <li>Breed-specific health considerations</li>
+              </ul>
+              
+              <h3>Practical Applications</h3>
+              <p>How to apply this scientific knowledge to your dog's care:</p>
+              <ul>
+                <li>Implement evidence-based health practices</li>
+                <li>Make informed decisions about nutrition</li>
+                <li>Understand your dog's unique needs</li>
+                <li>Work effectively with your veterinarian</li>
+              </ul>
+            </div>
+          )}
+          
+          {post.category === 'health' && (
+            <div>
+              <h2>Health and Wellness Focus</h2>
+              <p>Maintaining your dog's health requires understanding the signs of wellness and illness. This comprehensive guide helps you become a better advocate for your pet's health.</p>
+              
+              <h3>Health Monitoring Basics</h3>
+              <p>Essential health indicators to monitor regularly:</p>
+              <ul>
+                <li>Weight and body condition</li>
+                <li>Energy levels and behavior</li>
+                <li>Appetite and hydration</li>
+                <li>Mobility and comfort</li>
+              </ul>
+              
+              <h3>Preventive Care Strategies</h3>
+              <p>Proactive approaches to maintaining health:</p>
+              <ul>
+                <li>Regular veterinary check-ups</li>
+                <li>Appropriate vaccination schedules</li>
+                <li>Dental care and hygiene</li>
+                <li>Parasite prevention</li>
+              </ul>
+              
+              <h3>When to Seek Professional Help</h3>
+              <p>Recognizing when your dog needs veterinary attention is crucial for early intervention and better outcomes.</p>
+            </div>
+          )}
+          
+          {post.category === 'care' && (
+            <div>
+              <h2>Comprehensive Care Guidelines</h2>
+              <p>Providing excellent care for your dog involves understanding their changing needs throughout different life stages and circumstances.</p>
+              
+              <h3>Daily Care Essentials</h3>
+              <p>Fundamental aspects of daily dog care:</p>
+              <ul>
+                <li>Proper nutrition and feeding schedules</li>
+                <li>Exercise and mental stimulation</li>
+                <li>Grooming and hygiene</li>
+                <li>Social interaction and bonding</li>
+              </ul>
+              
+              <h3>Special Considerations</h3>
+              <p>Adapting care for specific situations:</p>
+              <ul>
+                <li>Senior dog care modifications</li>
+                <li>Puppy development support</li>
+                <li>Managing health conditions</li>
+                <li>Environmental enrichment</li>
+              </ul>
+            </div>
+          )}
+          
+          {post.category === 'development' && (
+            <div>
+              <h2>Understanding Dog Development</h2>
+              <p>Dog development is a fascinating process that continues throughout their lives. Understanding these changes helps you provide appropriate care and support.</p>
+              
+              <h3>Physical Development</h3>
+              <p>Key aspects of physical growth and maturation:</p>
+              <ul>
+                <li>Growth patterns by breed size</li>
+                <li>Skeletal and muscular development</li>
+                <li>Reproductive maturity</li>
+                <li>Age-related physical changes</li>
+              </ul>
+              
+              <h3>Behavioral Development</h3>
+              <p>How behavior evolves throughout a dog's life:</p>
+              <ul>
+                <li>Socialization periods</li>
+                <li>Learning and training capacity</li>
+                <li>Personality development</li>
+                <li>Age-related behavioral changes</li>
+              </ul>
+            </div>
+          )}
+          
+          {post.category === 'behavior' && (
+            <div>
+              <h2>Understanding Canine Behavior</h2>
+              <p>Dog behavior is complex and influenced by genetics, environment, and life experiences. This guide helps you better understand and communicate with your pet.</p>
+              
+              <h3>Communication Basics</h3>
+              <p>How dogs communicate with us and each other:</p>
+              <ul>
+                <li>Body language signals</li>
+                <li>Vocal communications</li>
+                <li>Scent marking and territory</li>
+                <li>Play and social behaviors</li>
+              </ul>
+              
+              <h3>Behavioral Changes with Age</h3>
+              <p>How behavior evolves as dogs mature:</p>
+              <ul>
+                <li>Puppy exuberance to adult stability</li>
+                <li>Senior cognitive changes</li>
+                <li>Adaptation strategies</li>
+                <li>Supporting behavioral health</li>
+              </ul>
+            </div>
+          )}
+          
+          <div class="mt-8 p-6 bg-blue-50 rounded-lg">
+            <h3 class="text-lg font-semibold text-gray-900 mb-2">Expert Insight</h3>
+            <p class="text-gray-600 italic">
+              "Understanding your dog's individual needs and characteristics is key to providing the best possible care. Every dog is unique, and what works for one may not work for another." - {post.author}
+            </p>
+          </div>
+        </div>
+        
+        <!-- Related Tools CTA -->
+        <div class="mt-16 p-8 bg-blue-50 rounded-2xl">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4 text-center">
+            Put Knowledge into Action
+          </h3>
+          <p class="text-gray-600 text-center mb-6">
+            Use our professional assessment tools to apply what you've learned about your dog's health
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/tools/dog-age-calculator/" class="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+              🐕 Calculate Dog Age
+            </a>
+            <a href="/tools/dog-bmi-calculator/" class="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+              ⚖️ Assess Dog BMI
+            </a>
+          </div>
+        </div>
+        
+        <!-- Author Bio -->
+        <div class="mt-12 p-6 bg-gray-50 rounded-lg">
+          <h4 class="font-semibold text-gray-900 mb-2">About the Author</h4>
+          <p class="text-gray-600">
+            <strong>{post.author}</strong> is a veterinary professional with extensive experience in canine health and behavior. 
+            {post.category === 'science' && 'They specialize in translating complex research into practical advice for pet owners.'}
+            {post.category === 'health' && 'They focus on preventive care and early detection of health issues.'}
+            {post.category === 'care' && 'They are passionate about helping owners provide the best possible care for their pets.'}
+            {post.category === 'development' && 'They study canine development and behavior throughout the lifespan.'}
+            {post.category === 'behavior' && 'They specialize in animal behavior and communication.'}
+          </p>
+        </div>
+        
+        <!-- Navigation -->
+        <div class="mt-12 flex justify-between items-center">
+          <a href="/blog/" class="text-blue-600 hover:text-blue-700 font-semibold">
+            ← Back to All Articles
+          </a>
+          <a href="/guides/" class="text-blue-600 hover:text-blue-700 font-semibold">
+            Read Related Guides →
+          </a>
+        </div>
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .prose h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .prose h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .prose h4 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .prose p {
+    color: #4b5563;
+    line-height: 1.625;
+    margin-bottom: 1rem;
+  }
+  
+  .prose ul {
+    list-style-type: disc;
+    list-style-position: inside;
+    color: #4b5563;
+    margin-bottom: 1rem;
+  }
+  
+  .prose li {
+    margin-left: 1rem;
+    margin-bottom: 0.25rem;
+  }
+</style>

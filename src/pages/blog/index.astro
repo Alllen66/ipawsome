@@ -21,7 +21,7 @@ const pageDescription = 'Comprehensive blog covering dog health, aging, BMI asse
     </section>
 
     <!-- Categories Filter -->
-    <section class="py-8 px-4 bg-gray-50">
+    <section class="py-8 px-4 bg-white">
       <div class="max-w-6xl mx-auto">
         <div class="flex flex-wrap gap-3 justify-center">
           <button class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-700 transition-colors">
@@ -44,7 +44,7 @@ const pageDescription = 'Comprehensive blog covering dog health, aging, BMI asse
     </section>
 
     <!-- Blog Posts Grid -->
-    <section class="py-16 px-4 bg-white">
+    <section class="py-16 px-4">
       <div class="max-w-6xl mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogsData.map((post) => (
@@ -60,7 +60,7 @@ const pageDescription = 'Comprehensive blog covering dog health, aging, BMI asse
                 <div class="text-4xl mb-4 text-center">{post.image}</div>
                 
                 <h2 class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-blue-600 transition-colors">
-                  <a href="#">
+                  <a href={`/blog/${post.slug}/`}>
                     {post.title}
                   </a>
                 </h2>
@@ -82,7 +82,7 @@ const pageDescription = 'Comprehensive blog covering dog health, aging, BMI asse
                   <span>{post.publishDate}</span>
                 </div>
                 
-                <a href="#" class="text-blue-600 font-semibold hover:text-blue-700 text-sm transition-colors">
+                <a href={`/blog/${post.slug}/`} class="text-blue-600 font-semibold hover:text-blue-700 text-sm transition-colors">
                   Read Full Article →
                 </a>
               </div>
@@ -93,7 +93,7 @@ const pageDescription = 'Comprehensive blog covering dog health, aging, BMI asse
     </section>
 
     <!-- Newsletter CTA -->
-    <section class="py-16 px-4 bg-gray-50">
+    <section class="py-16 px-4 bg-white">
       <div class="max-w-4xl mx-auto text-center">
         <div class="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-12 text-white">
           <div class="text-5xl mb-6">📬</div>

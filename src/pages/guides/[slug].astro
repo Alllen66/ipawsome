@@ -1,0 +1,239 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import guidesData from '../../data/guides.json';
+
+export async function getStaticPaths() {
+  return guidesData.map((guide) => ({
+    params: { slug: guide.slug },
+    props: { guide },
+  }));
+}
+
+const { guide } = Astro.props;
+const pageTitle = `${guide.title} - Dog Care Guide`;
+const pageDescription = guide.description;
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <main>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-green-600 to-green-800 text-white py-20 px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex items-center gap-2 mb-4">
+          <a href="/guides/" class="text-green-200 hover:text-white transition-colors">
+            ← Back to Guides
+          </a>
+        </div>
+        
+        <div class="flex items-center gap-2 mb-4">
+          <span class="bg-green-100 text-green-800 text-sm font-semibold px-3 py-1 rounded-full uppercase">
+            {guide.category.replace('-', ' ')}
+          </span>
+          <span class="text-green-100">{guide.readTime}</span>
+        </div>
+        
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          {guide.title}
+        </h1>
+        
+        <p class="text-xl text-green-100 mb-6 leading-relaxed">
+          {guide.description}
+        </p>
+        
+        <div class="flex flex-wrap gap-2 mb-6">
+          {guide.tags.map((tag) => (
+            <span class="bg-white/20 text-white text-sm px-3 py-1 rounded-full">
+              {tag}
+            </span>
+          ))}
+        </div>
+        
+        <div class="text-sm text-green-100">
+          Published on {guide.publishDate}
+        </div>
+      </div>
+    </section>
+
+    <!-- Article Content -->
+    <article class="py-16 px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="prose prose-lg max-w-none">
+          <div class="text-center mb-12">
+            <div class="text-8xl mb-6">{guide.image}</div>
+          </div>
+          
+          <!-- Sample content based on guide type -->
+          {guide.category === 'age-calculation' && (
+            <div>
+              <h2>Understanding Dog Age Calculation</h2>
+              <p>The traditional "7-year rule" for calculating dog age has been debunked by modern veterinary science. This comprehensive guide explores the real science behind dog aging and how to accurately determine your pet's biological age.</p>
+              
+              <h3>Why the 7-Year Rule is Wrong</h3>
+              <p>Dogs don't age at a constant rate throughout their lives. Puppies mature much faster in their first year, reaching adolescence by 6-12 months. The aging process then slows down and varies significantly based on breed size.</p>
+              
+              <h3>The Modern Approach</h3>
+              <p>Current veterinary research shows that:</p>
+              <ul>
+                <li>Small dogs (under 20 lbs) age more slowly after maturity</li>
+                <li>Large dogs (over 50 lbs) age faster, especially in their senior years</li>
+                <li>The first year of a dog's life equals approximately 15 human years</li>
+                <li>The second year adds another 9 human years</li>
+                <li>Each subsequent year varies by breed size</li>
+              </ul>
+              
+              <h3>Practical Applications</h3>
+              <p>Understanding your dog's real age helps you:</p>
+              <ul>
+                <li>Provide age-appropriate nutrition</li>
+                <li>Adjust exercise routines</li>
+                <li>Schedule preventive veterinary care</li>
+                <li>Recognize age-related health changes</li>
+              </ul>
+            </div>
+          )}
+          
+          {guide.category === 'health-assessment' && (
+            <div>
+              <h2>Comprehensive Health Assessment for Dogs</h2>
+              <p>Regular health assessments are crucial for maintaining your dog's wellbeing. This guide provides a systematic approach to evaluating your pet's health beyond just weight and age.</p>
+              
+              <h3>Physical Examination Basics</h3>
+              <p>Learn to perform basic health checks at home:</p>
+              <ul>
+                <li>Body condition scoring</li>
+                <li>Dental health evaluation</li>
+                <li>Skin and coat assessment</li>
+                <li>Eye and ear examination</li>
+                <li>Mobility and gait analysis</li>
+              </ul>
+              
+              <h3>Warning Signs to Watch For</h3>
+              <p>Key indicators that warrant veterinary attention:</p>
+              <ul>
+                <li>Changes in appetite or water consumption</li>
+                <li>Unusual lethargy or hyperactivity</li>
+                <li>Difficulty breathing or persistent coughing</li>
+                <li>Changes in bathroom habits</li>
+                <li>Behavioral changes or confusion</li>
+              </ul>
+            </div>
+          )}
+          
+          {guide.category === 'life-stages' && (
+            <div>
+              <h2>Dog Life Stages: Complete Development Guide</h2>
+              <p>Understanding your dog's life stages helps you provide appropriate care throughout their lifetime. Each stage has unique needs and characteristics.</p>
+              
+              <h3>Puppy Stage (0-12 months)</h3>
+              <p>Rapid growth and development period:</p>
+              <ul>
+                <li>Socialization is critical</li>
+                <li>High-energy, frequent meals needed</li>
+                <li>Basic training and house-breaking</li>
+                <li>Vaccination schedule completion</li>
+              </ul>
+              
+              <h3>Adult Stage (1-7 years)</h3>
+              <p>Prime years with stable energy and health:</p>
+              <ul>
+                <li>Consistent exercise routine</li>
+                <li>Annual veterinary check-ups</li>
+                <li>Preventive care focus</li>
+                <li>Optimal nutrition maintenance</li>
+              </ul>
+              
+              <h3>Senior Stage (7+ years)</h3>
+              <p>Increased health monitoring and comfort care:</p>
+              <ul>
+                <li>Bi-annual veterinary visits</li>
+                <li>Joint health support</li>
+                <li>Cognitive health monitoring</li>
+                <li>Adjusted exercise and diet</li>
+              </ul>
+            </div>
+          )}
+          
+          {(guide.category === 'breed-science' || guide.category === 'nutrition') && (
+            <div>
+              <h2>{guide.title}</h2>
+              <p>{guide.description}</p>
+              
+              <h3>Key Points</h3>
+              <p>This comprehensive guide covers essential information about {guide.category.replace('-', ' ')} for dog owners.</p>
+              
+              <h3>Expert Recommendations</h3>
+              <p>Based on current veterinary research and best practices, we provide evidence-based recommendations for optimal dog care.</p>
+              
+              <h3>Practical Tips</h3>
+              <p>Actionable advice you can implement immediately to improve your dog's health and wellbeing.</p>
+            </div>
+          )}
+        </div>
+        
+        <!-- Related Tools CTA -->
+        <div class="mt-16 p-8 bg-green-50 rounded-2xl">
+          <h3 class="text-2xl font-bold text-gray-900 mb-4 text-center">
+            Apply This Knowledge
+          </h3>
+          <p class="text-gray-600 text-center mb-6">
+            Use our professional tools to assess your dog's health based on the information in this guide
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/tools/dog-age-calculator/" class="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+              🐕 Calculate Dog Age
+            </a>
+            <a href="/tools/dog-bmi-calculator/" class="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+              ⚖️ Check Dog BMI
+            </a>
+          </div>
+        </div>
+        
+        <!-- Navigation -->
+        <div class="mt-12 flex justify-between items-center">
+          <a href="/guides/" class="text-green-600 hover:text-green-700 font-semibold">
+            ← Back to All Guides
+          </a>
+          <a href="/blog/" class="text-green-600 hover:text-green-700 font-semibold">
+            Read Related Articles →
+          </a>
+        </div>
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  .prose h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #111827;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .prose h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .prose p {
+    color: #4b5563;
+    line-height: 1.625;
+    margin-bottom: 1rem;
+  }
+  
+  .prose ul {
+    list-style-type: disc;
+    list-style-position: inside;
+    color: #4b5563;
+    margin-bottom: 1rem;
+  }
+  
+  .prose li {
+    margin-left: 1rem;
+    margin-bottom: 0.25rem;
+  }
+</style>

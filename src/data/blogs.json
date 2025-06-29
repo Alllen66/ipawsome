@@ -7,7 +7,8 @@
     "image": "🔬",
     "category": "science",
     "readTime": "6 min read",
-    "tags": ["dog age", "science", "veterinary", "myths"]
+    "tags": ["dog age", "science", "veterinary", "myths"],
+    "slug": "debunking-7-year-rule-real-science-dog-age"
   },
   {
     "title": "Is My Dog Overweight? Signs Every Owner Should Know",
@@ -17,7 +18,8 @@
     "image": "🏥",
     "category": "health",
     "readTime": "5 min read",
-    "tags": ["obesity", "health", "weight management", "body condition"]
+    "tags": ["obesity", "health", "weight management", "body condition"],
+    "slug": "is-my-dog-overweight-signs-every-owner-should-know"
   },
   {
     "title": "Why Small Dogs Live Longer: The Size-Lifespan Connection",
@@ -27,7 +29,8 @@
     "image": "📊",
     "category": "science",
     "readTime": "7 min read",
-    "tags": ["lifespan", "genetics", "breed size", "aging"]
+    "tags": ["lifespan", "genetics", "breed size", "aging"],
+    "slug": "why-small-dogs-live-longer-size-lifespan-connection"
   },
   {
     "title": "Senior Dog Care: Adjusting to Your Aging Pet's Needs",
@@ -37,7 +40,8 @@
     "image": "👴",
     "category": "care",
     "readTime": "9 min read",
-    "tags": ["senior dogs", "aging", "care", "health"]
+    "tags": ["senior dogs", "aging", "care", "health"],
+    "slug": "senior-dog-care-adjusting-aging-pet-needs"
   },
   {
     "title": "Puppy Development Timeline: What to Expect Each Month",
@@ -47,7 +51,8 @@
     "image": "🐶",
     "category": "development",
     "readTime": "8 min read",
-    "tags": ["puppies", "development", "training", "milestones"]
+    "tags": ["puppies", "development", "training", "milestones"],
+    "slug": "puppy-development-timeline-what-expect-each-month"
   },
   {
     "title": "The Hidden Dangers of Canine Obesity",
@@ -57,7 +62,8 @@
     "image": "⚠️",
     "category": "health",
     "readTime": "6 min read",
-    "tags": ["obesity", "health risks", "prevention", "wellness"]
+    "tags": ["obesity", "health risks", "prevention", "wellness"],
+    "slug": "hidden-dangers-canine-obesity"
   },
   {
     "title": "Breed-Specific Health Concerns: What Every Owner Should Know",
@@ -67,7 +73,8 @@
     "image": "🏆",
     "category": "health",
     "readTime": "10 min read",
-    "tags": ["breed health", "genetics", "prevention", "screening"]
+    "tags": ["breed health", "genetics", "prevention", "screening"],
+    "slug": "breed-specific-health-concerns-every-owner-should-know"
   },
   {
     "title": "Understanding Your Dog's Body Language Through Life Stages",
@@ -77,6 +84,7 @@
     "image": "🗣️",
     "category": "behavior",
     "readTime": "7 min read",
-    "tags": ["body language", "behavior", "communication", "aging"]
+    "tags": ["body language", "communication", "behavior", "life stages"],
+    "slug": "understanding-dog-body-language-through-life-stages"
   }
-] 
+]

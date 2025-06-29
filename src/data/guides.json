@@ -6,7 +6,8 @@
     "publishDate": "Dec 20, 2024",
     "image": "🧬",
     "category": "age-calculation",
-    "tags": ["dog age", "science", "aging", "breed size"]
+    "tags": ["dog age", "science", "aging", "breed size"],
+    "slug": "understanding-dog-age-science-calculator"
   },
   {
     "title": "Dog Obesity Crisis: BMI and Weight Management Guide",
@@ -15,7 +16,8 @@
     "publishDate": "Dec 18, 2024",
     "image": "⚖️",
     "category": "health-assessment",
-    "tags": ["dog BMI", "weight management", "obesity", "health"]
+    "tags": ["dog BMI", "weight management", "obesity", "health"],
+    "slug": "dog-obesity-bmi-weight-management-guide"
   },
   {
     "title": "Life Stages of Dogs: From Puppy to Senior",
@@ -24,7 +26,8 @@
     "publishDate": "Dec 15, 2024",
     "image": "🐕‍🦺",
     "category": "life-stages",
-    "tags": ["puppy", "adult dog", "senior dog", "life stages"]
+    "tags": ["puppy", "adult dog", "senior dog", "life stages"],
+    "slug": "life-stages-dogs-puppy-to-senior"
   },
   {
     "title": "Breed-Specific Aging Patterns: Size Matters",
@@ -33,7 +36,8 @@
     "publishDate": "Dec 12, 2024",
     "image": "🏆",
     "category": "breed-science",
-    "tags": ["dog breeds", "genetics", "lifespan", "health"]
+    "tags": ["dog breeds", "genetics", "lifespan", "health"],
+    "slug": "breed-specific-aging-patterns-size-matters"
   },
   {
     "title": "Canine Health Assessment: Beyond Weight and Age",
@@ -42,7 +46,8 @@
     "publishDate": "Dec 10, 2024",
     "image": "🩺",
     "category": "health-assessment",
-    "tags": ["health check", "veterinary", "wellness", "prevention"]
+    "tags": ["health check", "veterinary", "wellness", "prevention"],
+    "slug": "canine-health-assessment-beyond-weight-age"
   },
   {
     "title": "Diet and Nutrition by Dog Age and Size",
@@ -51,6 +56,7 @@
     "publishDate": "Dec 8, 2024",
     "image": "🥘",
     "category": "nutrition",
-    "tags": ["nutrition", "feeding", "diet", "age-appropriate"]
+    "tags": ["nutrition", "diet", "feeding", "age-specific"],
+    "slug": "diet-nutrition-dog-age-size"
   }
-] 
+]
