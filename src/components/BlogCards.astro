@@ -1,0 +1,136 @@
+---
+import blogsData from '../data/blogs.json';
+
+// Show the 4 most recent blog posts
+const blogPosts = blogsData.slice(0, 4);
+---
+
+<section class="py-16 px-4 bg-gray-50">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Latest Blog Posts
+      </h2>
+      <p class="text-xl text-gray-600">
+        Stay updated with the latest insights on dog health, aging, and care
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <!-- Blog Posts -->
+      <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+        {blogPosts.map((post) => (
+          <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+            <div class="p-6">
+              <div class="flex items-center gap-2 mb-3">
+                <span class={`bg-${post.category === 'science' ? 'purple' : post.category === 'health' ? 'green' : post.category === 'care' ? 'blue' : 'orange'}-100 text-${post.category === 'science' ? 'purple' : post.category === 'health' ? 'green' : post.category === 'care' ? 'blue' : 'orange'}-800 text-xs font-semibold px-2 py-1 rounded-full uppercase`}>
+                  {post.category}
+                </span>
+                <span class="text-gray-500 text-sm">{post.readTime}</span>
+              </div>
+              
+              <div class="text-3xl mb-4 text-center">{post.image}</div>
+              
+              <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight">
+                <a href="#" class="hover:text-blue-600 transition-colors">
+                  {post.title}
+                </a>
+              </h3>
+              
+              <p class="text-gray-600 mb-4 leading-relaxed line-clamp-3">
+                {post.excerpt}
+              </p>
+              
+              <div class="flex flex-wrap gap-1 mb-4">
+                {post.tags && post.tags.slice(0, 2).map((tag) => (
+                  <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              
+              <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                <span>By {post.author}</span>
+                <span>{post.publishDate}</span>
+              </div>
+              
+              <a href="/blog" class="text-blue-600 font-semibold hover:text-blue-700 text-sm transition-colors">
+                Read Full Article →
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+      
+      <!-- Enhanced Newsletter Signup -->
+      <div class="bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl p-8 text-white h-fit">
+        <div class="text-4xl mb-4 text-center">📧</div>
+        <h3 class="text-2xl font-bold mb-4 text-center">
+          Pet Health Newsletter
+        </h3>
+        <p class="mb-6 text-blue-100 text-center">
+          Get weekly expert insights on dog health, age calculation tips, and wellness advice delivered to your inbox.
+        </p>
+        
+        <div class="bg-white/10 rounded-lg p-4 mb-6">
+          <ul class="text-sm text-blue-100 space-y-2">
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-green-300" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              Dog health & aging insights
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-green-300" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              Breed-specific care tips
+            </li>
+            <li class="flex items-center gap-2">
+              <svg class="w-4 h-4 text-green-300" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/>
+              </svg>
+              Tool updates & features
+            </li>
+          </ul>
+        </div>
+        
+        <form class="space-y-4">
+          <div>
+            <label for="email" class="block text-sm font-medium mb-2">
+              Email Address
+            </label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email"
+              placeholder="your@email.com"
+              class="w-full px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 focus:ring-offset-blue-600"
+              required
+            />
+          </div>
+          
+          <button 
+            type="submit"
+            class="w-full bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors duration-200 shadow-lg hover:shadow-xl"
+          >
+            Subscribe Now
+          </button>
+        </form>
+        
+        <p class="text-xs text-blue-200 mt-4 text-center">
+          No spam, unsubscribe at any time. We respect your privacy.
+        </p>
+      </div>
+    </div>
+    
+    <div class="text-center mt-12">
+      <a href="/blog" class="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200">
+        View All Posts
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

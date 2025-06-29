@@ -1,0 +1,14 @@
+[
+  {
+    "slug": "dog-age-calculator",
+    "title": "Dog Age Calculator",
+    "desc": "Convert your dog's age to human years with our accurate calculator based on breed size",
+    "icon": "🐕"
+  },
+  {
+    "slug": "dog-bmi-calculator",
+    "title": "Dog BMI Calculator",
+    "desc": "Professional canine weight health assessment tool supporting 20+ dog breeds with Imperial/Metric units",
+    "icon": "⚖️"
+  }
+]

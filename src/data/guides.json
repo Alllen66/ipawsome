@@ -1,0 +1,56 @@
+[
+  {
+    "title": "Understanding Dog Age: Science Behind the Calculator",
+    "description": "Learn how dog age conversion works, why the old '7-year rule' is outdated, and how breed size affects aging patterns in dogs",
+    "readTime": "8 min read",
+    "publishDate": "Dec 20, 2024",
+    "image": "🧬",
+    "category": "age-calculation",
+    "tags": ["dog age", "science", "aging", "breed size"]
+  },
+  {
+    "title": "Dog Obesity Crisis: BMI and Weight Management Guide",
+    "description": "Comprehensive guide to assessing your dog's weight, understanding canine BMI, and creating effective weight management plans",
+    "readTime": "12 min read",
+    "publishDate": "Dec 18, 2024",
+    "image": "⚖️",
+    "category": "health-assessment",
+    "tags": ["dog BMI", "weight management", "obesity", "health"]
+  },
+  {
+    "title": "Life Stages of Dogs: From Puppy to Senior",
+    "description": "Detailed breakdown of dog life stages, developmental milestones, and age-appropriate care for every phase of your dog's life",
+    "readTime": "15 min read",
+    "publishDate": "Dec 15, 2024",
+    "image": "🐕‍🦺",
+    "category": "life-stages",
+    "tags": ["puppy", "adult dog", "senior dog", "life stages"]
+  },
+  {
+    "title": "Breed-Specific Aging Patterns: Size Matters",
+    "description": "Why small dogs live longer than large dogs, breed-specific health concerns, and how genetics influence aging in different dog breeds",
+    "readTime": "10 min read",
+    "publishDate": "Dec 12, 2024",
+    "image": "🏆",
+    "category": "breed-science",
+    "tags": ["dog breeds", "genetics", "lifespan", "health"]
+  },
+  {
+    "title": "Canine Health Assessment: Beyond Weight and Age",
+    "description": "Complete guide to evaluating your dog's overall health, recognizing warning signs, and when to consult a veterinarian",
+    "readTime": "14 min read",
+    "publishDate": "Dec 10, 2024",
+    "image": "🩺",
+    "category": "health-assessment",
+    "tags": ["health check", "veterinary", "wellness", "prevention"]
+  },
+  {
+    "title": "Diet and Nutrition by Dog Age and Size",
+    "description": "Age and size-specific nutrition requirements, feeding schedules, and dietary adjustments for optimal health throughout your dog's life",
+    "readTime": "11 min read",
+    "publishDate": "Dec 8, 2024",
+    "image": "🥘",
+    "category": "nutrition",
+    "tags": ["nutrition", "feeding", "diet", "age-appropriate"]
+  }
+] 

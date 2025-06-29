@@ -1,0 +1,68 @@
+---
+import guidesData from '../data/guides.json';
+
+// Show the 6 most recent guides
+const guides = guidesData.slice(0, 6);
+---
+
+<section class="py-16 px-4">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+        Featured Guides
+      </h2>
+      <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+        Expert advice and comprehensive guides to help you understand your dog's health and well-being
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {guides.map((guide) => (
+        <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
+          <div class="p-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="bg-blue-100 text-blue-800 text-xs font-semibold px-2 py-1 rounded-full uppercase">
+                GUIDE
+              </span>
+              <span class="text-gray-500 text-sm">{guide.publishDate}</span>
+            </div>
+            
+            <div class="text-4xl mb-4 text-center">{guide.image}</div>
+            
+            <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-blue-600 transition-colors">
+              {guide.title}
+            </h3>
+            
+            <p class="text-gray-600 mb-4 leading-relaxed line-clamp-3">
+              {guide.description}
+            </p>
+            
+            <div class="flex flex-wrap gap-1 mb-4">
+              {guide.tags && guide.tags.slice(0, 2).map((tag) => (
+                <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">
+                  {tag}
+                </span>
+              ))}
+            </div>
+            
+            <div class="flex items-center justify-between text-sm">
+              <span class="text-gray-500 font-medium">{guide.readTime}</span>
+              <a href="/guides" class="text-blue-600 font-semibold hover:text-blue-700 transition-colors">
+                Read Guide →
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+    
+    <div class="text-center mt-12">
+      <a href="/guides" class="inline-flex items-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors duration-200">
+        View All Guides
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,22 @@
+{
+  "small": {
+    "first": 15,
+    "second": 24,
+    "k": 4
+  },
+  "medium": {
+    "first": 15,
+    "second": 24,
+    "k": 4
+  },
+  "large": {
+    "first": 15,
+    "second": 24,
+    "k": 5
+  },
+  "giant": {
+    "first": 12,
+    "second": 22,
+    "k": 7
+  }
+} 

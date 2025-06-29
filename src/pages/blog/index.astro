@@ -1,0 +1,125 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import blogsData from '../../data/blogs.json';
+
+const pageTitle = 'Dog Health Blog - Expert Insights & Tips';
+const pageDescription = 'Comprehensive blog covering dog health, aging, BMI assessment, and breed-specific care tips from veterinary experts.';
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <main>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-20 px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          Dog Health & Care Blog
+        </h1>
+        <p class="text-xl text-blue-100 max-w-2xl mx-auto">
+          Expert insights on dog health, aging science, weight management, and breed-specific care from veterinary professionals
+        </p>
+      </div>
+    </section>
+
+    <!-- Categories Filter -->
+    <section class="py-8 px-4 bg-gray-50">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-wrap gap-3 justify-center">
+          <button class="bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-700 transition-colors">
+            All Posts
+          </button>
+          <button class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors border">
+            Science
+          </button>
+          <button class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors border">
+            Health
+          </button>
+          <button class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors border">
+            Care
+          </button>
+          <button class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors border">
+            Development
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blog Posts Grid -->
+    <section class="py-16 px-4 bg-white">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {blogsData.map((post) => (
+            <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100">
+              <div class="p-6">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class={post.category === 'science' ? 'bg-purple-100 text-purple-800' : post.category === 'health' ? 'bg-green-100 text-green-800' : post.category === 'care' ? 'bg-blue-100 text-blue-800' : 'bg-orange-100 text-orange-800'} class="text-xs font-semibold px-2 py-1 rounded-full uppercase">
+                    {post.category}
+                  </span>
+                  <span class="text-gray-500 text-sm">{post.readTime}</span>
+                </div>
+                
+                <div class="text-4xl mb-4 text-center">{post.image}</div>
+                
+                <h2 class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-blue-600 transition-colors">
+                  <a href="#">
+                    {post.title}
+                  </a>
+                </h2>
+                
+                <p class="text-gray-600 mb-4 leading-relaxed">
+                  {post.excerpt}
+                </p>
+                
+                <div class="flex flex-wrap gap-1 mb-4">
+                  {post.tags && post.tags.slice(0, 3).map((tag) => (
+                    <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                
+                <div class="flex items-center justify-between text-sm text-gray-500 mb-4">
+                  <span class="font-medium">{post.author}</span>
+                  <span>{post.publishDate}</span>
+                </div>
+                
+                <a href="#" class="text-blue-600 font-semibold hover:text-blue-700 text-sm transition-colors">
+                  Read Full Article →
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="py-16 px-4 bg-gray-50">
+      <div class="max-w-4xl mx-auto text-center">
+        <div class="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl p-12 text-white">
+          <div class="text-5xl mb-6">📬</div>
+          <h2 class="text-3xl font-bold mb-4">
+            Never Miss a Health Tip
+          </h2>
+          <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+            Subscribe to our newsletter for the latest insights on dog health, aging science, and expert care tips delivered weekly.
+          </p>
+          
+          <form class="max-w-md mx-auto flex gap-3">
+            <input 
+              type="email" 
+              placeholder="Enter your email"
+              class="flex-1 px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-300"
+              required
+            />
+            <button 
+              type="submit"
+              class="bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

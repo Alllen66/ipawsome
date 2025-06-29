@@ -1,0 +1,154 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import guidesData from '../../data/guides.json';
+
+const pageTitle = 'Dog Care Guides - Complete Health & Wellness Resources';
+const pageDescription = 'Comprehensive guides covering dog age calculation, BMI assessment, health evaluation, and breed-specific care from veterinary experts.';
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <main>
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-br from-green-600 to-green-800 text-white py-20 px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6">
+          Complete Dog Care Guides
+        </h1>
+        <p class="text-xl text-green-100 max-w-2xl mx-auto">
+          Expert guides to help you understand your dog's health, from age calculation science to weight management and breed-specific care
+        </p>
+      </div>
+    </section>
+
+    <!-- Categories Filter -->
+    <section class="py-8 px-4 bg-gray-50">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-wrap gap-3 justify-center">
+          <button class="bg-green-600 text-white px-4 py-2 rounded-full text-sm font-medium hover:bg-green-700 transition-colors">
+            All Guides
+          </button>
+          <button class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors border">
+            Age Calculation
+          </button>
+          <button class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors border">
+            Health Assessment
+          </button>
+          <button class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors border">
+            Life Stages
+          </button>
+          <button class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors border">
+            Breed Science
+          </button>
+          <button class="bg-white text-gray-700 px-4 py-2 rounded-full text-sm font-medium hover:bg-gray-100 transition-colors border">
+            Nutrition
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Guide -->
+    <section class="py-16 px-4 bg-white">
+      <div class="max-w-6xl mx-auto">
+        <div class="bg-gradient-to-r from-blue-50 to-green-50 rounded-2xl p-8 mb-12">
+          <div class="flex flex-col lg:flex-row items-center gap-8">
+            <div class="lg:w-2/3">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full uppercase">
+                  Featured Guide
+                </span>
+                <span class="text-gray-500 text-sm">{guidesData[0].readTime}</span>
+              </div>
+              <h2 class="text-3xl font-bold text-gray-900 mb-4">
+                {guidesData[0].title}
+              </h2>
+              <p class="text-gray-600 text-lg mb-6 leading-relaxed">
+                {guidesData[0].description}
+              </p>
+              <div class="flex flex-wrap gap-2 mb-6">
+                {guidesData[0].tags.map((tag) => (
+                  <span class="bg-white text-gray-700 text-sm px-3 py-1 rounded-full border">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+              <a href="#" class="inline-flex items-center gap-2 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                Read Complete Guide
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+            <div class="lg:w-1/3 text-center">
+              <div class="text-8xl mb-4">{guidesData[0].image}</div>
+              <p class="text-sm text-gray-500">Updated {guidesData[0].publishDate}</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- All Guides Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {guidesData.slice(1).map((guide) => (
+            <article class="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 hover:-translate-y-1 border border-gray-100">
+              <div class="p-6">
+                <div class="flex items-center gap-2 mb-3">
+                  <span class="bg-green-100 text-green-800 text-xs font-semibold px-2 py-1 rounded-full uppercase">
+                    Guide
+                  </span>
+                  <span class="text-gray-500 text-sm">{guide.publishDate}</span>
+                </div>
+                
+                <div class="text-4xl mb-4 text-center">{guide.image}</div>
+                
+                <h3 class="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-green-600 transition-colors">
+                  <a href="#">
+                    {guide.title}
+                  </a>
+                </h3>
+                
+                <p class="text-gray-600 mb-4 leading-relaxed">
+                  {guide.description}
+                </p>
+                
+                <div class="flex flex-wrap gap-1 mb-4">
+                  {guide.tags && guide.tags.slice(0, 2).map((tag) => (
+                    <span class="bg-gray-100 text-gray-700 text-xs px-2 py-1 rounded-full">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                
+                <div class="flex items-center justify-between text-sm">
+                  <span class="text-gray-500 font-medium">{guide.readTime}</span>
+                  <a href="#" class="text-green-600 font-semibold hover:text-green-700 transition-colors">
+                    Read Guide →
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Tools CTA -->
+    <section class="py-16 px-4 bg-blue-600 text-white">
+      <div class="max-w-6xl mx-auto text-center">
+        <h2 class="text-3xl font-bold mb-4">
+          Ready to Assess Your Dog's Health?
+        </h2>
+        <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
+          Use our professional tools to calculate your dog's age and assess their BMI for better health management
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="/tools/dog-age-calculator" class="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+            🐕 Dog Age Calculator
+          </a>
+          <a href="/tools/dog-bmi-calculator" class="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+            ⚖️ Dog BMI Calculator
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>

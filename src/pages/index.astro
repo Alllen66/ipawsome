@@ -1,0 +1,54 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '../styles/global.css';
+import Hero from '../components/Hero.astro';
+import FeaturedTools from '../components/FeaturedTools.astro';
+import GuideCards from '../components/GuideCards.astro';
+import BlogCards from '../components/BlogCards.astro';
+
+const pageTitle = 'DogAge Calculator - Professional Dog Age & BMI Assessment Tools';
+const pageDescription = 'Free online tools for pet parents including dog age calculator, cat age calculator, pet food calculator and more. Expert-reviewed tools to help you care for your furry friends.';
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+    
+    <!-- JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "iPawsome",
+      "url": "https://ipawsome.com",
+      "logo": "https://ipawsome.com/logo.png",
+      "description": "Free online tools and resources for pet parents",
+      "sameAs": [
+        "https://facebook.com/ipawsome",
+        "https://twitter.com/ipawsome",
+        "https://instagram.com/ipawsome"
+      ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "iPawsome",
+      "url": "https://ipawsome.com",
+      "description": "Free online tools for pet parents including calculators and resources",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://ipawsome.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <!-- Main Content -->
+    <main>
+        <Hero />
+        <FeaturedTools />
+        <GuideCards />
+        <BlogCards />
+    </main>
+</Layout>

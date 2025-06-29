@@ -1,0 +1,241 @@
+---
+import '../../../styles/global.css';
+import AgeCalculatorIsland from '../../../components/AgeCalculatorIsland.tsx';
+import Footer from '../../../components/Footer.astro';
+
+const faqs = [
+  {
+    question: "How accurate is the dog age calculator?",
+    answer: "Our calculator uses veterinary-approved formulas that account for different dog sizes. Small dogs typically live longer than large dogs, so the aging process varies. While this gives a good approximation, actual aging can vary based on breed, health, and lifestyle."
+  },
+  {
+    question: "Why does dog size matter for age calculation?",
+    answer: "Larger dogs tend to age faster than smaller dogs. Small dogs reach maturity quickly but then age more slowly, while large and giant breeds have shorter lifespans and age more rapidly after reaching maturity."
+  },
+  {
+    question: "What's the difference between dog years and human years?",
+    answer: "The old '7 dog years = 1 human year' rule is oversimplified. Modern veterinary science shows that dogs age rapidly in their first two years, then the aging rate varies by size. Our calculator uses these updated formulas for more accurate results."
+  }
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Age Calculator - Convert Dog Years to Human Years | iPawsome</title>
+    <meta name="description" content="Calculate your dog's age in human years with our accurate dog age calculator. Based on veterinary science and accounts for different dog sizes and breeds.">
+    <meta name="keywords" content="dog age calculator, dog years to human years, pet age, dog age conversion, puppy age">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://ipawsome.com/tools/dog-age-calculator/">
+    <meta property="og:title" content="Dog Age Calculator - Convert Dog Years to Human Years">
+    <meta property="og:description" content="Calculate your dog's age in human years with our accurate dog age calculator based on veterinary science.">
+    <meta property="og:image" content="https://ipawsome.com/dog-age-calculator-og.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ipawsome.com/tools/dog-age-calculator/">
+    <meta property="twitter:title" content="Dog Age Calculator - Convert Dog Years to Human Years">
+    <meta property="twitter:description" content="Calculate your dog's age in human years with our accurate dog age calculator based on veterinary science.">
+    <meta property="twitter:image" content="https://ipawsome.com/dog-age-calculator-twitter.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- JSON-LD FAQPage Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How accurate is the dog age calculator?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Our calculator uses veterinary-approved formulas that account for different dog sizes. Small dogs typically live longer than large dogs, so the aging process varies. While this gives a good approximation, actual aging can vary based on breed, health, and lifestyle."
+          }
+        },
+        {
+          "@type": "Question", 
+          "name": "Why does dog size matter for age calculation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Larger dogs tend to age faster than smaller dogs. Small dogs reach maturity quickly but then age more slowly, while large and giant breeds have shorter lifespans and age more rapidly after reaching maturity."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the difference between dog years and human years?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The old '7 dog years = 1 human year' rule is oversimplified. Modern veterinary science shows that dogs age rapidly in their first two years, then the aging rate varies by size. Our calculator uses these updated formulas for more accurate results."
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ipawsome.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tools",
+          "item": "https://ipawsome.com/tools/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Dog Age Calculator",
+          "item": "https://ipawsome.com/tools/dog-age-calculator/"
+        }
+      ]
+    }
+    </script>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Header/Navigation -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <a href="/" class="flex items-center space-x-2">
+                        <span class="text-2xl">🐾</span>
+                        <span class="text-2xl font-bold text-gray-900">iPawsome</span>
+                    </a>
+                </div>
+                <nav class="hidden md:flex space-x-8">
+                    <a href="/" class="text-gray-600 hover:text-blue-600 font-medium">Home</a>
+                    <a href="/tools/" class="text-gray-600 hover:text-blue-600 font-medium">Tools</a>
+                    <a href="/guides/" class="text-gray-600 hover:text-blue-600 font-medium">Guides</a>
+                    <a href="/blog/" class="text-gray-600 hover:text-blue-600 font-medium">Blog</a>
+                    <a href="/about/" class="text-gray-600 hover:text-blue-600 font-medium">About</a>
+                </nav>
+                <div class="md:hidden">
+                    <button class="text-gray-600 hover:text-gray-900">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="bg-white">
+        <div class="max-w-6xl mx-auto px-4 py-3">
+            <nav class="flex items-center space-x-2 text-sm">
+                <a href="/" class="text-blue-600 hover:text-blue-800">Home</a>
+                <span class="text-gray-400">/</span>
+                <span class="text-gray-600">Dog Age Calculator</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="py-12">
+        <div class="max-w-4xl mx-auto px-4">
+            <!-- Page Title -->
+            <div class="text-center mb-12">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    🐕 Dog Age Calculator
+                </h1>
+                <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                    Convert your dog's age to human years using veterinary-approved formulas that account for breed size and aging patterns.
+                </p>
+            </div>
+
+            <!-- Calculator Component -->
+            <div class="mb-16">
+                <AgeCalculatorIsland client:load />
+            </div>
+
+            <!-- How It Works Section -->
+            <section class="mb-16">
+                <div class="bg-white rounded-xl p-8 shadow-md">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-6">How Our Calculator Works</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-3">🔬 Science-Based Formula</h3>
+                            <p class="text-gray-600 mb-4">
+                                Our calculator uses modern veterinary research instead of the outdated "7 dog years = 1 human year" rule. The formula accounts for rapid puppy development and size-based aging rates.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-3">📏 Size Matters</h3>
+                            <p class="text-gray-600 mb-4">
+                                Small dogs (under 25 lbs) age differently than giant breeds (over 100 lbs). Large dogs mature faster but have shorter lifespans, while small dogs live longer overall.
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-3">⏰ Age Stages</h3>
+                            <p class="text-gray-600 mb-4">
+                                First year ≈ 15 human years, second year adds ~9 years, then each subsequent year varies by size (4-7 human years per dog year).
+                            </p>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-3">🌟 Bonus Features</h3>
+                            <p class="text-gray-600 mb-4">
+                                Get your dog's zodiac sign based on their birth date, plus accurate age calculations for better health and care planning.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FAQ Section -->
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+                <div class="space-y-6">
+                    {faqs.map((faq, index) => (
+                        <div class="bg-white rounded-xl p-6 shadow-md">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-3">
+                                {faq.question}
+                            </h3>
+                            <p class="text-gray-600 leading-relaxed">
+                                {faq.answer}
+                            </p>
+                        </div>
+                    ))}
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="bg-blue-50 rounded-xl p-8 text-center">
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                    Need More Pet Tools?
+                </h2>
+                <p class="text-gray-600 mb-6">
+                    Explore our other helpful calculators and tools for pet parents.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="/tools/dog-bmi-calculator/" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                        Dog BMI Calculator
+                    </a>
+                    <a href="/tools/" class="border-2 border-blue-600 text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-600 hover:text-white transition-colors">
+                        View All Tools
+                    </a>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <Footer />
+</body>
+</html>
