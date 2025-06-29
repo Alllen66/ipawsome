@@ -4,8 +4,8 @@ import ReactECharts from 'echarts-for-react';
 interface DogBmiGaugeProps {
   breed: string;
   sex: "male" | "female";
-  weight: number; // 原始输入值
-  height: number; // 原始输入值
+  weight: number; // Original input value
+height: number; // Original input value
   weightUnit: 'lbs' | 'kg';
   heightUnit: 'inches' | 'cm';
   breedData?: {
@@ -147,7 +147,7 @@ const breedData: Record<string, BreedData> = {
 };
 
 const DogBmiGauge: React.FC<DogBmiGaugeProps> = ({ breed, sex, weight, height, weightUnit, heightUnit, breedData }) => {
-  // 转换函数
+  // Conversion functions
   const getWeightInKg = () => {
     return weightUnit === 'lbs' ? weight * 0.453592 : weight;
   };
@@ -157,30 +157,30 @@ const DogBmiGauge: React.FC<DogBmiGaugeProps> = ({ breed, sex, weight, height, w
   };
 
   const { bmi, idealBmiMin, idealBmiMax, status, isSupported } = useMemo(() => {
-    // 优先使用传入的breedData，否则使用硬编码的breedBmiData
+    // Prioritize using passed breedData, otherwise use hardcoded breedBmiData
     let idealBmiMin: number;
     let idealBmiMax: number;
     
     if (breedData) {
-      // 使用传入的品种数据计算理想BMI范围
+      // Calculate ideal BMI range using passed breed data
       const weightRange = breedData.weightRange[sex];
       const heightRange = breedData.heightRange[sex];
       
-      // 将磅转换为公斤，英寸转换为米
+      // Convert pounds to kg, inches to meters
       const minWeightKg = weightRange[0] * 0.453592;
       const maxWeightKg = weightRange[1] * 0.453592;
       const avgHeightM = ((heightRange[0] + heightRange[1]) / 2) * 0.0254;
       
-      // 计算理想BMI范围
+      // Calculate ideal BMI range
       idealBmiMin = minWeightKg / (avgHeightM * avgHeightM);
       idealBmiMax = maxWeightKg / (avgHeightM * avgHeightM);
     } else if (breedBmiData[breed]) {
-      // 使用硬编码的BMI数据
+      // Use hardcoded BMI data
       const bmiStandards = breedBmiData[breed][sex];
       idealBmiMin = bmiStandards.minBmi;
       idealBmiMax = bmiStandards.maxBmi;
     } else {
-      // 品种不支持
+      // Breed not supported
       return {
         bmi: 0,
         idealBmiMin: 0,
@@ -199,16 +199,16 @@ const DogBmiGauge: React.FC<DogBmiGaugeProps> = ({ breed, sex, weight, height, w
     let bmiStatus: 'underweight' | 'normal' | 'overweight' | 'obese';
     
     if (currentBmi < idealBmiMin * 0.9) {
-      // 低于标准区间10%
+      // Below standard range by 10%
       bmiStatus = 'underweight';
     } else if (currentBmi >= idealBmiMin && currentBmi <= idealBmiMax) {
-      // 落在标准区间内
+      // Within standard range
       bmiStatus = 'normal';
     } else if (currentBmi > idealBmiMax && currentBmi <= idealBmiMax * 1.3) {
-      // 超出10-30%
+      // Exceeds by 10-30%
       bmiStatus = 'overweight';
     } else {
-      // 超出30%
+      // Exceeds by 30%
       bmiStatus = 'obese';
     }
     
@@ -221,7 +221,7 @@ const DogBmiGauge: React.FC<DogBmiGaugeProps> = ({ breed, sex, weight, height, w
     };
   }, [breed, sex, weight, height, weightUnit, heightUnit]);
 
-  // 不支持的品种显示提示
+  // Show tip for unsupported breeds
   if (!isSupported) {
     return (
       <div className="bg-white rounded-xl shadow-lg p-8 text-center">
@@ -234,16 +234,16 @@ const DogBmiGauge: React.FC<DogBmiGaugeProps> = ({ breed, sex, weight, height, w
     );
   }
 
-  // 计算仪表盘的范围
+  // Calculate gauge ranges
   const gaugeMin = Math.max(0, Math.min(idealBmiMin * 0.5, bmi * 0.5));
   const gaugeMax = Math.max(idealBmiMax * 2, bmi * 1.5, 50);
   
-  // 计算四个区间的比例
+  // Calculate proportions for four intervals
   const underweightEnd = (idealBmiMin * 0.9 - gaugeMin) / (gaugeMax - gaugeMin);
   const normalEnd = (idealBmiMax - gaugeMin) / (gaugeMax - gaugeMin);
   const overweightEnd = (idealBmiMax * 1.3 - gaugeMin) / (gaugeMax - gaugeMin);
 
-  // ECharts 配置
+  // ECharts configuration
   const option = {
     series: [
       {
@@ -277,10 +277,10 @@ const DogBmiGauge: React.FC<DogBmiGaugeProps> = ({ breed, sex, weight, height, w
           lineStyle: {
             width: 25,
             color: [
-              [underweightEnd, '#3B82F6'], // 偏瘦 - 蓝色
-              [normalEnd, '#10B981'], // 正常 - 绿色
-              [overweightEnd, '#F59E0B'], // 超重 - 橙色
-              [1, '#EF4444'] // 肥胖 - 红色
+              [underweightEnd, '#3B82F6'], // Underweight - Blue
+[normalEnd, '#10B981'], // Normal - Green
+[overweightEnd, '#F59E0B'], // Overweight - Orange
+[1, '#EF4444'] // Obese - Red
             ]
           }
         },
@@ -301,7 +301,7 @@ const DogBmiGauge: React.FC<DogBmiGaugeProps> = ({ breed, sex, weight, height, w
           }
         },
         axisLabel: {
-          show: false  // 隐藏数字标签，只显示三大范围
+          show: false  // Hide number labels, only show three main ranges
         },
         detail: {
           valueAnimation: true,
@@ -326,7 +326,7 @@ const DogBmiGauge: React.FC<DogBmiGaugeProps> = ({ breed, sex, weight, height, w
         left: `${15 + underweightEnd * 35}%`,
         top: '75%',
         style: {
-          text: '偏瘦',
+          text: 'Underweight',
           fontSize: 10,
           fontWeight: 'bold',
           fill: '#3B82F6',
@@ -338,7 +338,7 @@ const DogBmiGauge: React.FC<DogBmiGaugeProps> = ({ breed, sex, weight, height, w
         left: `${15 + (underweightEnd + normalEnd) * 35 / 2}%`,
         top: '75%',
         style: {
-          text: '正常',
+          text: 'Normal',
           fontSize: 10,
           fontWeight: 'bold',
           fill: '#10B981',
@@ -350,7 +350,7 @@ const DogBmiGauge: React.FC<DogBmiGaugeProps> = ({ breed, sex, weight, height, w
         left: `${15 + (normalEnd + overweightEnd) * 35 / 2}%`,
         top: '75%',
         style: {
-          text: '超重',
+          text: 'Overweight',
           fontSize: 10,
           fontWeight: 'bold',
           fill: '#F59E0B',
@@ -362,7 +362,7 @@ const DogBmiGauge: React.FC<DogBmiGaugeProps> = ({ breed, sex, weight, height, w
         left: `${15 + (overweightEnd + 1) * 35 / 2}%`,
         top: '75%',
         style: {
-          text: '肥胖',
+          text: 'Obese',
           fontSize: 10,
           fontWeight: 'bold',
           fill: '#EF4444',
@@ -378,7 +378,7 @@ const DogBmiGauge: React.FC<DogBmiGaugeProps> = ({ breed, sex, weight, height, w
     switch (status) {
       case 'underweight':
         return {
-          label: '偏瘦',
+          label: 'Underweight',
           color: 'text-blue-600',
           bgColor: 'bg-blue-50 border-blue-200',
           icon: '📉',
@@ -386,7 +386,7 @@ const DogBmiGauge: React.FC<DogBmiGaugeProps> = ({ breed, sex, weight, height, w
         };
       case 'normal':
         return {
-          label: '理想体重',
+          label: 'Ideal Weight',
           color: 'text-green-600',
           bgColor: 'bg-green-50 border-green-200',
           icon: '✅',
@@ -394,7 +394,7 @@ const DogBmiGauge: React.FC<DogBmiGaugeProps> = ({ breed, sex, weight, height, w
         };
       case 'overweight':
         return {
-          label: '超重',
+          label: 'Overweight',
           color: 'text-orange-600',
           bgColor: 'bg-orange-50 border-orange-200',
           icon: '📈',
@@ -402,7 +402,7 @@ const DogBmiGauge: React.FC<DogBmiGaugeProps> = ({ breed, sex, weight, height, w
         };
       case 'obese':
         return {
-          label: '肥胖',
+          label: 'Obese',
           color: 'text-red-600',
           bgColor: 'bg-red-50 border-red-200',
           icon: '🚨',
@@ -410,7 +410,7 @@ const DogBmiGauge: React.FC<DogBmiGaugeProps> = ({ breed, sex, weight, height, w
         };
       default:
         return {
-          label: '未知',
+          label: 'Unknown',
           color: 'text-gray-600',
           bgColor: 'bg-gray-50 border-gray-200',
           icon: '❓',
@@ -432,7 +432,7 @@ const DogBmiGauge: React.FC<DogBmiGaugeProps> = ({ breed, sex, weight, height, w
         </p>
       </div>
 
-      {/* ECharts 仪表盘 */}
+      {/* ECharts Gauge */}
       <div className="mb-4">
         <ReactECharts 
           option={option} 
@@ -441,7 +441,7 @@ const DogBmiGauge: React.FC<DogBmiGaugeProps> = ({ breed, sex, weight, height, w
         />
       </div>
 
-      {/* 状态信息 */}
+      {/* Status Information */}
       <div className={`p-3 rounded-lg border ${statusInfo.bgColor}`}>
         <div className="flex items-center justify-center mb-2">
           <span className="text-xl mr-2">{statusInfo.icon}</span>
@@ -454,7 +454,7 @@ const DogBmiGauge: React.FC<DogBmiGaugeProps> = ({ breed, sex, weight, height, w
         </p>
       </div>
 
-      {/* BMI 数值和区间参考 */}
+      {/* BMI Value and Range Reference */}
       <div className="mt-4 p-3 bg-gray-50 rounded-lg">
         <div className="text-center mb-2">
           <div className="text-2xl font-bold text-gray-900">
@@ -465,22 +465,22 @@ const DogBmiGauge: React.FC<DogBmiGaugeProps> = ({ breed, sex, weight, height, w
         <div className="grid grid-cols-4 gap-1 text-xs">
           <div className="text-center">
             <div className="w-3 h-3 bg-blue-500 rounded mx-auto mb-1"></div>
-            <div className="font-medium text-blue-600">偏瘦</div>
+            <div className="font-medium text-blue-600">Underweight</div>
             <div className="text-gray-600">&lt; {(idealBmiMin * 0.9).toFixed(1)}</div>
           </div>
           <div className="text-center">
             <div className="w-3 h-3 bg-green-500 rounded mx-auto mb-1"></div>
-            <div className="font-medium text-green-600">正常</div>
+            <div className="font-medium text-green-600">Normal</div>
             <div className="text-gray-600">{idealBmiMin.toFixed(1)} - {idealBmiMax.toFixed(1)}</div>
           </div>
           <div className="text-center">
             <div className="w-3 h-3 bg-orange-500 rounded mx-auto mb-1"></div>
-            <div className="font-medium text-orange-600">超重</div>
+            <div className="font-medium text-orange-600">Overweight</div>
             <div className="text-gray-600">{(idealBmiMax * 1.01).toFixed(1)} - {(idealBmiMax * 1.3).toFixed(1)}</div>
           </div>
           <div className="text-center">
             <div className="w-3 h-3 bg-red-500 rounded mx-auto mb-1"></div>
-            <div className="font-medium text-red-600">肥胖</div>
+            <div className="font-medium text-red-600">Obese</div>
             <div className="text-gray-600">&gt; {(idealBmiMax * 1.3).toFixed(1)}</div>
           </div>
         </div>
