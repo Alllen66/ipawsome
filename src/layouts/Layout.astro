@@ -5,9 +5,11 @@ import Footer from '../components/Footer.astro';
 export interface Props {
   title: string;
   description?: string;
+  canonical?: string;
 }
 
-const { title, description = "Free online tools for pet parents including dog age calculator, cat age calculator, pet food calculator and more." } = Astro.props;
+const { title, description = "Professional dog age calculator and BMI calculator for pet health assessment. Convert dog years to human years and check your dog's weight health with our veterinary-approved tools supporting 20+ breeds.", canonical } = Astro.props;
+const canonicalURL = canonical || Astro.url.href;
 ---
 
 <!DOCTYPE html>
@@ -16,19 +18,27 @@ const { title, description = "Free online tools for pet parents including dog ag
   <meta charset="UTF-8" />
   <meta name="description" content={description} />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="iPawsome" />
+  <meta name="keywords" content="dog age calculator, dog BMI calculator, pet health, dog years to human years, canine weight assessment, veterinary tools" />
+  <link rel="canonical" href={canonicalURL} />
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <meta name="generator" content={Astro.generator} />
   <title>{title}</title>
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
+  <meta property="og:site_name" content="iPawsome" />
   
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={canonicalURL} />
   <meta property="twitter:title" content={title} />
   <meta property="twitter:description" content={description} />
+  <meta property="twitter:site" content="@ipawsome" />
 </head>
 <body class="bg-gray-50">
   <!-- Header/Navigation -->

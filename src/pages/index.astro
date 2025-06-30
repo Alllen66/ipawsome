@@ -6,8 +6,8 @@ import FeaturedTools from '../components/FeaturedTools.astro';
 import GuideCards from '../components/GuideCards.astro';
 import BlogCards from '../components/BlogCards.astro';
 
-const pageTitle = 'iPawsome - Free Online Tools for Pet Parents';
-const pageDescription = 'Free online tools for pet parents including dog age calculator, cat age calculator, pet food calculator and more. Expert-reviewed tools to help you care for your furry friends.';
+const pageTitle = 'iPawsome - Dog Age & BMI Calculator | Free Pet Health Tools';
+const pageDescription = 'Professional dog age calculator and BMI calculator for pet health assessment. Convert dog years to human years and check your dog\'s weight health with our veterinary-approved tools supporting 20+ breeds.';
 ---
 
 <Layout title={pageTitle} description={pageDescription}>
@@ -20,27 +20,41 @@ const pageDescription = 'Free online tools for pet parents including dog age cal
       "name": "iPawsome",
       "url": "https://ipawsome.com",
       "logo": "https://ipawsome.com/logo.png",
-      "description": "Free online tools and resources for pet parents",
+      "description": "Professional dog age calculator and BMI calculator for pet health assessment",
       "sameAs": [
-        "https://facebook.com/ipawsome",
-        "https://twitter.com/ipawsome",
-        "https://instagram.com/ipawsome"
-      ]
+        "https://www.facebook.com/ipawsome/",
+        "https://www.instagram.com/ipawsome/"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Free dog age and BMI calculators"
+      }
     }
     </script>
     
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "iPawsome",
+      "@type": "WebApplication",
+      "name": "iPawsome - Dog Age & BMI Calculator",
       "url": "https://ipawsome.com",
-      "description": "Free online tools for pet parents including calculators and resources",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://ipawsome.com/search?q={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
+      "description": "Professional dog age calculator and BMI calculator for pet health assessment. Convert dog years to human years and check your dog's weight health with veterinary-approved tools.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": [
+        "Dog Age Calculator - Convert dog years to human years",
+        "Dog BMI Calculator - Professional weight health assessment",
+        "Support for 20+ dog breeds",
+        "Veterinary-approved formulas",
+        "Imperial and Metric units support"
+      ]
     }
     </script>
 
